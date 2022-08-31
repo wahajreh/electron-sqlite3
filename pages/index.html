@@ -32,10 +32,10 @@
               <div class="form-group">
                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me"
                       name="remember-me" type="checkbox"></span></label><br>
-                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                <input type="submit" id="submit" name="submit" class="btn btn-info btn-md" value="submit">
               </div>
               <div id="register-link" class="text-right">
-                <a href="#" class="text-info">Register here</a>
+                <a href="home.html" class="text-info">Register here</a>
               </div>
             </form>
           </div>
@@ -43,7 +43,19 @@
       </div>
     </div>
   </div>
+
+  <!-- jquery cdn -->
+  <script src="./public/jquery.js"></script>
+
+  <script>
+    $("#submit").click(function (e) {
+      e.preventDefault();
+      window.location.href = "home.html"
+
+    });
+  </script>
 </body>
+
 
 <style>
   body {
