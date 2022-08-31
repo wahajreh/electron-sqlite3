@@ -7,7 +7,7 @@ const app1 = express()
 
 const port = 3000
 const sqlite3 = require('sqlite3')
-
+app1.use('/as', require('./api/index'))
 app1.get('/', (req, res) => {
   var db = new sqlite3.Database('mydb.db');
   db.serialize(function () {
@@ -17,12 +17,16 @@ app1.get('/', (req, res) => {
       stmt.run("Ipsum " + i);
     }
     stmt.finalize();
+
+    var pdf = require("pdf-creator-node");
+
+    // Read HTML Template
+    var html = ``
     var row;
     db.all("SELECT rowid AS id, info FROM lorem", function (err, row) {
       // console.log(row.id + ": " + row.info);
       res.status(200).json({ code: 0, message: true, data: row })
     });
-    console.log(row)
   });
   db.close();
 })
